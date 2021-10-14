@@ -1,0 +1,7 @@
+:host {
+  display: contents;
+}
+.dtscroll-body {
+  max-height: 150px; // set the height which the answer is not shown
+  overflow: auto;
+}

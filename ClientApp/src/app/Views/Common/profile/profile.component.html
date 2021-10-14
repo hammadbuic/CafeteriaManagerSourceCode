@@ -1,0 +1,87 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Profile</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/home/admin" (click)="onClick()">Home</a></li>
+          <li class="breadcrumb-item active">User Profile</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<ng-template #noAdmin>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle" src="{{srcImg}}" alt="User profile picture">
+              </div>
+              <h3 class="profile-username text-center">{{user?.fullName | uppercase}}</h3>
+
+              <p class="text-muted text-center">{{user?.id}}</p>
+
+              <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <b>Username</b> <a class="float-right">{{user?.userName}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Email</b> <a class="float-right">{{user?.email}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Role</b> <a class="float-right">{{user?.role}}</a>
+                </li>
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!----Supervisor View Html-->
+<div class="container" *ngIf="admin; else noAdmin">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+
+              <h3 class="profile-username text-center">{{admin?.fullname | uppercase}}</h3>
+
+              <p class="text-muted text-center">{{admin?.id}}</p>
+
+              <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                  <b>Username</b> <a class="float-right">{{admin?.username}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Email</b> <a class="float-right">{{admin?.email}}</a>
+                </li>
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!----Supervisor View Html END-->
+</div>

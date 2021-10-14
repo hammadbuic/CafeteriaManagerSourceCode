@@ -1,0 +1,94 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Manage Kitchen</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Manage Kitchen</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+  <section class="content">
+    <div class="container-fluid">
+      <table datatable [dtOptions]="dtOptions" class="table table-bordered row-border table-hover" style="width:100%">
+        <thead class="text-center btn-primary">
+          <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Quantity Available</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="dtscroll-body">
+          <tr *ngFor="let item of items" class="text-center">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.price}}</td>
+            <td>
+              <div class="btn-group mt-2" role="group">
+                <button type="button" class="btn btn-success" (click)="onViewOrders(item)"><i class="fas fa-layer-group"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <!-- ADD MODAL START-->
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title">View Orders</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <p class="list-group-item active text-center text-uppercase">{{modalMessage}}</p>
+      <!-- /.container-fluid -->
+      <section class="content">
+        <div class="container-fluid">
+          <table datatable [dtOptions]="dtOptions" class="table table-bordered row-border table-hover" style="width:50%">
+            <thead class="text-center btn-primary">
+              <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Delivery Address</th>
+                <th>Order Quantity</th>
+                <th>Order Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders" class="text-center">
+                <td>{{order.id}}</td>
+                <td>{{order.customer_name}}</td>
+                <td>{{order.delivery_address}}</td>
+                <td>{{order.order_quantity}}</td>
+                <td>{{order.order_time}}</td>
+                <td>
+                  <div *ngIf="order.status" style="color:green">Delivered</div>
+                  <div *ngIf="!order.status" style="color:red">Not Delivered</div></td>
+                <td>
+                  <div class="btn-group mt-2" role="group">
+                    <button type="button" class="btn btn-success"><i class="fas fa-check-circle" (click)="onDelivery(order)"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </ng-template>
+  </section>

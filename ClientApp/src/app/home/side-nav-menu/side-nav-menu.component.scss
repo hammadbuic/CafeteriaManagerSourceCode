@@ -1,0 +1,33 @@
+.img-responsive{
+    max-width:100%;
+    height:fit-content;
+    display:block;
+}
+.main-sidebar {
+  height: 100vh;
+  overflow: scroll;
+  background-color: #1b3240;
+  position:relative;
+}
+.nav-sidebar{
+    position:relative;
+}
+.brand-link {
+  background-color: #1b3240;
+  color: white;
+}
+
+.fa-2x {
+  font-size: 1.25em !important;
+}
+
+.nav-link {
+  color: white;
+  position: fixed;
+}
+
+.sidebar {
+  position:relative;
+}
+
+
